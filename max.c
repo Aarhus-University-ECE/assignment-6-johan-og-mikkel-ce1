@@ -26,7 +26,7 @@ int main() {
 
   int test = max(arr,size);
 
-  printf("%d",test);
+  printf("The max integer in the array is: %d\n",test);
 
 
 	return 0;

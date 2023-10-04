@@ -21,8 +21,19 @@ void add(node *head, int x) {
 
 // exersice 3.b
 int size(node *l) {
+  //Pre: l points to first empty element.
 
-	return 0;
+  //Post: size of the list
+  assert(l!=NULL);
+
+  int count = 0; //Initialize a counter variable as 0
+  node *p = l->next; //Create a pointer to the "next" component of the node l
+  while (p!=NULL){ //While loop incrementing count for every list component that is not NULL
+    count++;
+    p = p->next; //Update the pointer
+  }
+
+	return count;
 }
 
 // exersice 3.c and 3.d
@@ -33,6 +44,7 @@ void printout(node *l) {
   node *p = l->next;
   while (p != NULL) {
     printf("%d, ", p->data);
+    p = p->next;
   }
   printf("\n");
 }
@@ -42,8 +54,19 @@ int largest(node *l) {
   // pre:  head poinst to the first, empty element.
   // 	     The last element's next is NULL.
   // post: Returns the largest value of the list
+  assert(l!=NULL);
 
-  return 0;
+  node *p = l->next; //Make p point to the first empty element
+  int max = 0; //Initialize max variable as 0
+
+  while (p!=NULL){
+
+    if (p->data > max) { //If the current datavalue is higher than one previously seen
+      max = p->data;     //Update the max to the current datavalue
+    }
+    p = p->next;  //update pointer
+  }
+  return max;
 }
 
 #ifndef TEST
@@ -58,7 +81,12 @@ int main() {
   add(list, 2);
   // Show list here
 
+  printf("%d\n",size(list));
+  
+  printout(list);
+
+  printf("%d", largest(list));
   return 0;
-}
+} 
 
 #endif
